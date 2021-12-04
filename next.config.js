@@ -46,9 +46,8 @@ const {
                   STRIPE_WEBHOOK_SECRET: '',
             
 //_______db strings
-                    MONGODB_URI: 'mongodb://localhost:27017/magimabioDb',
+                    MONGODB_URI: '',
                     DATABASE_CLOUD:'',
-                  // DEV_URL: "http://localhost:3000",
                  
                    NEXTAUTH_URL:'http://localhost:3000', // for production
                   //  NEXTAUTH_URL_INTERNAL: devNextAuthUrl,
