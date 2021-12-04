@@ -41,13 +41,13 @@ const {
                   })(),
                   
                   //_______stripe pay
-                  STRIPE_PUBLIC_KEY: 'pk_test_51K1UVmA7pcTNwUoc9kSUDw8ybnuqjMCT6rlE0PjENpp1KbKduRXvdNEt8lI4PlHoQ2y71DjqmG7LMKSxACTMtq7v00Co8KLAxo',
-                  STRIPE_SECTRET_KEY: 'sk_test_51K1UVmA7pcTNwUocrF2RpZ370pUiZZQZQZKLOZ9FZ6McY3ugluFodVEUjIvGjVbL9gUxnqeHuQrjuyt1jPBMfdSV00EuifWoQa',
-                  STRIPE_WEBHOOK_SECRET: 'whsec_0VirPufcEMqCple3LInnietaB8e1BXjD',
+                  STRIPE_PUBLIC_KEY: '',
+                  STRIPE_SECTRET_KEY: '',
+                  STRIPE_WEBHOOK_SECRET: '',
             
 //_______db strings
                     MONGODB_URI: 'mongodb://localhost:27017/magimabioDb',
-                    DATABASE_CLOUD:'mongodb+srv://portfolioDb:frederick1610@final-projects-wbs-codi.pulb6.mongodb.net/<portfolioDb>?retryWrites=true&w=majority',
+                    DATABASE_CLOUD:'',
                   // DEV_URL: "http://localhost:3000",
                  
                    NEXTAUTH_URL:'http://localhost:3000', // for production
@@ -55,9 +55,8 @@ const {
 
                 //____cloudinary strings
                   CLOUDINARY_NAME:'magimaart',
-                  CLOUDINARY_API_KEY:'399829674291311',
-                  CLOUDINARY_API_SECRET:'4rfscNDKgSQQhPu_mxoFiNYsqoU',
-               // CLOUDINARY_API_ENVIROMENT_VARIABLE=CLOUDINARY_URL=cloudinary://399829674291311:4rfscNDKgSQQhPu_mxoFiNYsqoU@magimaart,
+                  CLOUDINARY_API_KEY:'',
+                  CLOUDINARY_API_SECRET:'',
               
               //  config image
                images: {
