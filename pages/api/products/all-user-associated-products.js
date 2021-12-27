@@ -1,7 +1,5 @@
 import nc from 'next-connect'
 import { dbConnect } from "../../../config";
-// import { allUsersWithAssociatedProducts } from '../../../controllers/productController/productControllers';
-// import { isAuthenticatedUser } from "../../../middlewares/authUser";
 import onError from '../../../middlewares/errors'
 
   // => api/products/all-user-associated-products
