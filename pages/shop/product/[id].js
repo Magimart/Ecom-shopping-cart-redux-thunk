@@ -1,12 +1,11 @@
 import {motion} from "framer-motion";  //____testing
 import React from "react";
-import BackgroundHome from "../../../components/BackgroundHome";
-// import { animateFromRight, enterFromLeft, animateFromLeft } from '../../../utils/animations/animate';
+import BackgroundHome from "../../../components/layoutComponents/BackgroundHome";
+import { animateFromRight, enterFromLeft, animateFromLeft } from '../../../utils/animations/animate';
 import { wrapper } from "../../../redux/store";
 import { getProductDetails } from "../../../redux/actions/productActions";
 import ProductDetailsPage from "../../../components/mainComponents/shop/ProductDetailsPage";
-
-
+import { getAllProducts } from "../../../redux/actions/productActions";
 
 
 export default function productDetailsPage () {
@@ -16,30 +15,31 @@ export default function productDetailsPage () {
 
   <>
 
-           <motion.section exit={{ opacity: 0 }}>
+          <motion.section exit={{ opacity: 0 }}>
                <div id="HomeMwrapper"  
                     className="z-1 m-0 p-0 relative h-screen
                      "
                 >
                     <BackgroundHome/>
                     <ProductDetailsPage
-                        // animateFromRight={ animateFromRight} 
-                        // enterFromLeft={ enterFromLeft } 
-                        // animateFromLeft={ animateFromLeft }
+                        animateFromRight={ animateFromRight} 
+                        enterFromLeft={ enterFromLeft } 
+                        animateFromLeft={ animateFromLeft }
                     />  
-                 </div>  
-         </motion.section>
+               </div>  
+           </motion.section>
 
   </>
 
   )
 }
 
-    export const getServerSideProps = wrapper.getServerSideProps(store => async ({ req, params }) => {
-          
-      console.log("here are the params request")                 
-       console.log(params.id) 
-      console.log(store)               
-     await store.dispatch(getProductDetails(req, params.id))
+    export const getServerSideProps = wrapper.getServerSideProps(store => async ({ req, params, query }) => {
+                        
+         await store.dispatch(getProductDetails(req, params.id))
+
+     //__________________added to fetch all products
+     await store.dispatch(getAllProducts(req, query.page, query.location, query.artistName, query.category))
+
   })
 

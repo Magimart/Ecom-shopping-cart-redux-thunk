@@ -16,10 +16,12 @@ export const addToCart = (id) => async (dispatch, getState) => {
 
     try {
         
+           console.log(id)
+
             const {data} = await axios.get(`/api/products/product_details/${id}`)
+
                  console.log(data)
 
-                   console.log(id)
                    console.log(qty)
 
                   dispatch({
@@ -30,7 +32,7 @@ export const addToCart = (id) => async (dispatch, getState) => {
                                 artistName: data.productDetails.artistName,
                                 price: data.productDetails.price,               
                                 countInStock: data.productDetails.countInStock,
-                                imagesOfPainting: data.productDetails.imagesOfPainting,
+                                imagesOfProduct: data.productDetails.imagesOfProduct,
                                 qty
                            }
                 })
@@ -42,10 +44,10 @@ export const addToCart = (id) => async (dispatch, getState) => {
 
                      console.log(error)
 
-                        //     dispatch({
-                        //         type: ADD_CART_FAIL,
-                        //         payload: error.response.data.message
-                        //    })
+                            dispatch({
+                                type: ADD_CART_FAIL,
+                                payload: error.response.data.message
+                           })
         
     }
 }

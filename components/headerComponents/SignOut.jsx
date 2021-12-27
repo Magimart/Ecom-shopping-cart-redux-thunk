@@ -1,4 +1,4 @@
- import {signOut } from 'next-auth/client';
+import {signOut } from 'next-auth/client';
 import React from 'react';
 import SignInLink from './SignInLink';
 import { useRouter } from 'next/router'

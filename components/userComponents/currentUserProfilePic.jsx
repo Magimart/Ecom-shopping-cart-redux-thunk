@@ -10,23 +10,23 @@ import { isCurrentUser } from '../../redux/actions/userActions';
 export const CurrentUserImage = ()=> {
 
        const defaultImage = '/images/user_profile/default-user-image.png';
-       const session = useSession();
+      //const session = useSession();
 
        const [liveUser, setLiveUser]  = useState("")
        const [userImage, setUserImage]  = useState("")
 
    
          const dispatch= useDispatch();
-         const {user, loading} = useSelector(state => state.isCurrentUser)
+        //  const {user, loading} = useSelector(state => state.isCurrentUser)
          
-       useEffect(() => {
-         if (!user) {
-           dispatch(isCurrentUser())
-         }
-           setLiveUser(user && user.fName);
-           setUserImage(user && user.avatar.url);
+      //  useEffect(() => {
+      //    if (!user) {
+      //      dispatch(isCurrentUser())
+      //    }
+      //      setLiveUser(user && user.fName);
+      //      setUserImage(user && user.avatar.url);
           
-       }, [dispatch, user])
+      //  }, [dispatch, user])
 
     return (
             <figure className="fixed w-8 h-8  rounded-full 
@@ -40,11 +40,11 @@ export const CurrentUserImage = ()=> {
                         "
             >                 
                 <>
-                   
-                      <img className="object-cover h-full  w-full rounded-full"
+                   pic
+                      {/* <img className="object-cover h-full  w-full rounded-full"
                           src={user? userImage : defaultImage} 
                           alt={liveUser}
-                       />                 
+                       />                  */}
                 </>
 
             </figure>

@@ -66,9 +66,7 @@ export default NextAuth({
         }
     },
     //_______persisting the database
-    database: process.env.MONGODB_URI,  // !sureWithredux
-    	debug: true,
-
-
+    // database: process.env.MONGODB_URI,  // !sureWithredux
+    // 	debug: true,
 });
 

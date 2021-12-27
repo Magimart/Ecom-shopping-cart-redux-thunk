@@ -16,26 +16,24 @@ import {motion} from "framer-motion";
                className="text-4xl
                         relative   
                       font-extrabold text-center">
-                    <div className="grid justify-center grid-col-3 -mt-1                        
-                        md:py-0 
-                        lg:py-0 lg:text-5xl 
-                        xl:py-0 xl:text-6xl 
-                        
-                                               
+                    <div className="gridn justify-center grid-col-3 m-0                       
+                        md:py-4 
+                        lg:py-4 lg:text-5xl 
+                        xl:py- xl:text-6xl                               
                     ">
                             <span className="focus:ring bg-clip-text 
                                             flex text-transparent 
                                             bg-gradient-to-r from-white to-black                                            
                                             md:block md:-mt-40
                                             lg:block lg:-mt-40 
-                                            xl:block xl:-mt-36                                                                                                    
+                                            xl:block xl:-mt-40                                                                                                    
                             ">
                                 {
                                   info && info.map((el, i)=> {
                                    return(
                                     <Fragment key={i}>
-                                    <div className="xxs:mb-20
-                                               xs:mb-20 sm:mb-0
+                                    <div className="xxs:mb-20a
+                                               xs:mb-20a sm:mb-0
                                           "
                                     >{el}</div>
                                     </Fragment>

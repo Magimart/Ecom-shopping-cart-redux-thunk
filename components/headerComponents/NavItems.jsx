@@ -7,9 +7,11 @@ import React from 'react';
 
       return (
                <>
-                  <ul className=" block m-2 text-center list-none text-sm
+                  <div className='bg-black h-full w-full flex text-white'>
+
+                  <ul className=" block mx-5 px-4 text-center list-none text-sm
                                  y-4 divide-white divide-opacity-75 justify-center
-                                 relative top-3
+                                 relative top-1
                                 "
                   >
                      {allPathNames && allPathNames.map((link) => {
@@ -18,7 +20,7 @@ import React from 'react';
                                <React.Fragment key={link.pageName}>
                                   <Link   href={link.pathName} passHref>
                                      <li 
-                                         className="mx-3 text-center bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500"
+                                         className="mx-1 px-3 py- text-center bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500"
                                        >  
                                         {link.pageName}
                                          
@@ -29,6 +31,17 @@ import React from 'react';
                       }
                       )}
                   </ul>
+                    <Link href="/shop">
+                       <button className='bg-yellow-500 bg-opacity-40 h-full flex w-max px-2 relative 
+                          group border-indigo-500 hover:bg-yellow-500 
+                          bg-opacity-10  
+                          hover:border-transparent
+                       '
+                        >
+                            <span className='flex hover:bg-green-700  hover:shadow-2xl w-max px-1 justify-center items-center h-max mt-11 bg-yellow-600 '>shop</span>
+                        </button>
+                    </Link>
+                  </div>
                </>
       );
 }

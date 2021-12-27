@@ -92,6 +92,19 @@
 
 }
 
+.halfSpinnerSmall {
+  width: 30px;
+  height: 30px;
+  border: 3px solid #03fc4e;
+  border-top: 3px solid transparent;
+  border-radius: 50%;
+  animation: spin 0.5s linear 0s infinite;
+  z-index: 100;
+  display: flex;
+  
+
+}
+
 .completed {
   font-size: 2rem;
   color: #03fc4e;

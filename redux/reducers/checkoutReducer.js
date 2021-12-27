@@ -22,10 +22,9 @@ import {
                 const purchase = action.payload;
 
                   function storeOnLocal ( data){
-                        console.log(data)
                         return localStorage.setItem('order', JSON.stringify(data));
                   }
-                  console.log(purchase && storeOnLocal(purchase))
+                //   console.log(purchase && storeOnLocal(purchase))
  
                 return {
                     //loading: false,
@@ -66,8 +65,6 @@ export const orderSummaryReducer = (state = { newOrderSummary: [] }, action) => 
         case ORDER_SUMMARY_SUCCESS:
 
              try{
-
-                console.log(action.payload)
                 const summary = action.payload;
                  
                 return {

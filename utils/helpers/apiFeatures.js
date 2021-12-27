@@ -29,13 +29,8 @@ class APIFeatures {
 
             removeFields.forEach(el => delete queryCopy[el]);
 
-            // console.log(queryCopy)
-
-            // this.query = this.query.find(queryCopy);
             this.query = this.query.find(queryCopy);
           
-            // console.log(this.query)
-            // console.log(this)
 
             return this;
         }

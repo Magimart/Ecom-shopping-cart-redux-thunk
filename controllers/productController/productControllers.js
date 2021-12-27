@@ -14,35 +14,84 @@ cloudinary.config({
 
 
 
+//_____________to get only current user products /api/products/current-user-products
+const currentUserProducts = async(req, res ) => { 
+
+    try{
+
+            const myProducts = await Product.find({user: req.user._id})
+            .populate({
+              path: 'title',
+              select: 'title'
+            })
+            .populate({
+                path: 'price',
+                select: 'price'
+              })
+            .populate({
+                path: 'category',
+                select: 'painting sculpture wall hanging water colours'
+              }) 
+            .populate({
+                path: 'countInStock',
+                select: 'countInStock'
+              })
+            .populate({
+              path: 'user',
+              select: 'fName sName country address'
+            })
+            .populate({
+                path: 'description',
+                select: 'description'
+              })
+              .populate({
+                path: 'dimenssion',
+                select: 'width height'
+              })
+              .populate({
+                path: 'medium',
+                select: 'mixed medium on canvas oils on canvas ink on paper'
+              })
+              .populate({
+                path: 'imagesOfProduct',
+                select: 'public_id url'
+              })
+
+        
+            res.status(200).json({
+                success: true,
+                myProducts 
+            });
+  
+          }catch(error){
+              console.error(error.message)
+        }
+  };
+
+
+
 // get all paintings   =>   /api/products
 const allProducts = async (req, res) => {
 
     try{
 
-        //_______________removing fields and adding pagination___________
-                           //{{DOMAIN}}/api/products?countryOfArtist=Sudan
          const resPerPage = 8;
-         const allProductCount = await Product.countDocuments();
-         console.log("here is the paintings count ________________________");
-         console.log(allProductCount);
-          
+         const allProductCount = await Product.countDocuments();          
 
-        const apiFeatures = new APIFeatures(Product.find(), req.query)
-        .search()
-        .filter()
+         const apiFeatures = new APIFeatures(Product.find({}), req.query)
+         .search()
+         .filter()
 
 
         let allStoredProducts = await apiFeatures.query //_________!!
         let filteredProductCount = allStoredProducts.length;
 
-
-        console.log("here are all products<<<<< ________________________");
-        console.log(allStoredProducts)
-
         apiFeatures.pagination(resPerPage);
-        allStoredProducts = await apiFeatures.query.clone();
 
+        allStoredProducts = await apiFeatures.query;
 
+        // allStoredProducts = await apiFeatures.query.clone();
+         //TypeError: apiFeatures.query.clone is not a function
         res.status(200).json({
         success: true,
         allProductCount,
@@ -55,55 +104,33 @@ const allProducts = async (req, res) => {
         console.log(error)
         }
 
-
     }
 
 
-
-// Create a painting  =>   /api/products/product
-
-const addNewProduct = async(req, res)=> { 
-    try{
-  
-        console.log(req.body)
-        const product = await Product.create(req.body);     
-         res.status(200).json({
-             success: true,
-             message: 'Your painting was successfully added',
-             data: product
-         });
-
-    }catch(error){
-        console.log(error)
-    }
-
-}
 
 // Get painting details   =>   /api/products/product/:id || /api/products/product/617a4562f2265da6ea3b28af
-const getProductDetails = catchAsyncErrors(async (req, res, next) => {
+const getProductDetails = async (req, res, next) => {
 
-    console.log("her is the reques at the get product details controller")
-    console.log(req)
-    const productDetails = await Product.findById(req.query.id);
+         try{ 
+            const productDetails = await Product.findById(req.query.id);
+        
+            if (!productDetails) {
+                return next(new ErrorHandler('product not found with associated id', 404))
+            }
+        
+            res.status(200).json({
+                 success: true,
+                 productDetails
+            })
 
-    console.log("her is the product details at controllers")
-
-    console.log(productDetails)
-
-    if (!productDetails) {
-        return next(new ErrorHandler('product not found with associated id', 404))
-    }
-
-    res.status(200).json({
-        success: true, productDetails
-    })
-});
+         }catch(error){
+             console.log(error)
+         }
+};
 
 // Update painting details   =>    /api/products/product/:id
 const updateProduct = catchAsyncErrors(async (req, res) => {
 
-    console.log("her is the request at the update method--------------")
-    console.log(req.body);
 
     let product = await Product.findById(req.query.id);
 
@@ -111,34 +138,7 @@ const updateProduct = catchAsyncErrors(async (req, res) => {
         return next(new ErrorHandler('product not found with this ID', 404))
     }
 
-    // if (req.body.images) {
 
-    //     // Delete images associated with the room
-    //     for (let i = 0; i < room.images.length; i++) {
-    //         await cloudinary.v2.uploader.destroy(room.images[i].public_id)
-    //     }
-
-    //     let imagesLinks = []
-    //     const images = req.body.images;
-
-    //     for (let i = 0; i < images.length; i++) {
-
-    //         const result = await cloudinary.v2.uploader.upload(images[i], {
-    //             folder: 'bookit/rooms',
-    //         });
-
-    //         imagesLinks.push({
-    //             public_id: result.public_id,
-    //             url: result.secure_url
-    //         })
-
-    //     }
-
-    //     req.body.images = imagesLinks;
-
-    // }
-     
-    //---!!/pass id followed by the info that u r updating, third param is to aviod some warnings
     product = await Product.findByIdAndUpdate(req.query.id, req.body, { 
         new: true,
         runValidators: true,
@@ -174,10 +174,7 @@ const deleteProduct = catchAsyncErrors(async (req, res, next) => {
 
 export { 
     allProducts,
-    addNewProduct,
     getProductDetails,
-    updateProduct,
-    deleteProduct
 }
 
 

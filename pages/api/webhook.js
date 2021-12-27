@@ -1,10 +1,10 @@
 import nc from 'next-connect'
-import dbConnect from '../../config/dbConnect'
-
+import {dbConnect} from '../../config'
+import { webhookCheckout } from '../../controllers/paymentControllers/paymentControllers';
 import onError from '../../middlewares/errors'
-import { webhookCheckout } from '../../create-stripe-session';
 
 const handler = nc({ onError });
+
 
 dbConnect();
 

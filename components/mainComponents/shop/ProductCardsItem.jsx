@@ -3,10 +3,10 @@ import Link from "next/link"
 
 
 
-export const ProductCardsItem = ({item})=> {
+export const ProductCardsItem = ({item, addToCartHandler})=> {
 
 
-            const [images] = item.imagesOfPainting;
+            const [images] = item.imagesOfProduct;
 
 
 
@@ -15,24 +15,28 @@ export const ProductCardsItem = ({item})=> {
             return (
                 <React.Fragment key={item._id}>
                      <div href="#" className="group">
-                         <div className="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-tr-lg rounded-tl-lg 
-                         overflow-hidden 
-                         xl:aspect-w-7 xl:aspect-h-8
-                         ">
-                             <img src={images && images.url}
-                             alt={item.artistName}
-                             className="w-full h-full text-xs object-center object-cover group-hover:opacity-75" 
-                             />
-                         </div>
+                                <div className="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-tr-lg rounded-tl-lg 
+                                overflow-hidden 
+                                xl:aspect-w-7 xl:aspect-h-8
+                                "
+                                >
+                                    <Link href={`/shop/product/${item && item._id}`}>
+
+                                    <img src={images && images.url}
+                                        alt={item.artistName}
+                                        className="w-full cursor-pointer h-full text-xs object-center object-cover group-hover:opacity-75" 
+                                    />
+                                    </Link>                            
+                               </div>
                          <div className="info-box text-xs flex p-1 font-semibold text-gray-500 bg-gray-300">
                                  <span className="mr-1 p-1 px-2 font-bold"></span>
                                  <span className="mr-1 p-1 px- font-bold border-l border-gray-400 text-xs">Likes</span>
                                  <span className="mr-1 p-1 px- h-6 font-bold border-l border-gray-400 text-xs">Dislikes</span>
                                  <span className="mr-1 p-1 px- h-6 font-bold border-l border-gray-400 text-xs">
                                  <Link href={`/shop/product/${item && item._id}`}>
-                                     <a className="bg-gray-400 px-1 text-yellow-700 bg-opacity-50">view details</a>
+                                     <a className="bg-gray-400 px-1 cursor-pointer text-yellow-700 bg-opacity-50">view details</a>
                                  </Link>                                
-                        </span>
+                               </span>
                          </div>
                          <div className="info-box text-xs block p-1 font-semibold text-gray-500 bg-gray-300">
                          <div className="mr-1 px-2 font-bold">
@@ -40,22 +44,30 @@ export const ProductCardsItem = ({item})=> {
                                      title:<span className=" px-1 semi-bold text-gray-400 ">{item.title}</span>
                              </span>
                              <span className="mr-1 p-1 px-2 font-bold justify-start flex">
-                                     medium:<span className=" px-1 font-thin ">{item.medium}</span>
+                                <div className="justify-evena flex">
+                                                    medium:<span className=" px-2 font-thin ">{item.medium}</span> size:<span className="bg-yellow-5 px-2 font-thin ">
+                                                                    {item.dimenssion.height} <span className="text-gray-600 font-semibold text-xs px-1">x</span>{item.dimenssion.width} <span className="text-gray-600 text-xs">cm</span>
+                                                            </span>  
+                                </div>
                              </span>
                              <span className="mr-1 p-1 px-2 font-bold justify-start flex">
-                                     Artist: <span className=" px-1 font-thin font-cursive font-style: italic"> {item.artistName}</span>
+                                 Artist: <span className=" px-1 font-thin font-cursive font-style: italic">
+                                        {/* {item && item.user.fName} */}....
+                                     <span className="px-1"></span>
+                                        {/* {item && item.user.sName} */}
+                                     </span>
                              </span>
                              <span className="mr-1 p-1 px-2 font-bold  justify-start flex">
-                                     Country: <span className=" mx-1 font-semibold ">{item.countryOfArtist}</span>
+                                     Country: <span className=" mx-1 font-semibold ">...</span>
                              </span>
                              <span className="mr-1 p-1 px-2 font-bold justify-start flex">
-                                <div className="justify-evena flex-1">
+                             <div className="justify-evena flex">
                                     Price: <span className="px-1 text-yellow-700">{item.price}</span> | available :<span className="bg-yellow-500 mx-2 px-2 text-red-500">in stock</span>  
                                 </div>
                              </span>
                              <span className=" font-bold  text-sm ">description
                                  <span className="description font-thin text-xs mx-1  ">
-                                     {item.description.slice(0,80).concat("...")}
+                                     {item.description.slice(0,60).concat("...")}
                                      <Link href={`/shop/product/${item && item._id}`}>
                                         <a className="text-yellow-700 mx-1">
                                             read more
@@ -68,7 +80,10 @@ export const ProductCardsItem = ({item})=> {
 
 
                           <div className="mr-1 p-1 flex  justify-center px- h-8 font-bold border-l border-gray-400 text-xs">
-                                <button className="bg-black px-2 h-full rounded-md  ">
+                                <button className="bg-black px-2 h-full rounded-md  
+                                                  "
+                                       onClick={()=>addToCartHandler(item._id)}           
+                                >
                                      add to card
                                  </button>
                          </div>

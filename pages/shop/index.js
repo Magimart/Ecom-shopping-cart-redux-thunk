@@ -1,22 +1,18 @@
 import React  from "react";
-import { enterFromLeftSmall,animateFromTop,
-       animateFromRight,enterFromRight, 
-       enterFromLeft,
-        animateFromLeft,enterFromLeftBig, bounceUpDownFromDown
-      } from "../../utils/animations/animate";
 import { UnCoverPage } from "../../components/animationComponents/UnCoverPage";
 import { ViewportProvider } from "../../utils/helpers/ViewPortWindow";
 import ShopItemsModel from "../../components/mainComponents/shop/ShopItemsModel";
+import { wrapper } from '../../redux/store'
+import { getAllProducts } from "../../redux/actions/productActions";
 
 
+export default function  ShopPage () {
 
-const ShopPage = ({ currentPage, onFirstMount, allPathNames}) =>  {
-  // console.log(infos)
   return (
    <>
      <UnCoverPage/>
      <ViewportProvider>
-       <div  className="grid  m-0 p-0 col-span-12  h-100vh bg-yellow-400 bg-opacity-60               
+       <div  className="grid  m-0 p-0 col-span-12  h-100vha h- bg-yellow-400 bg-opacity-60               
                     "
         >
             <ShopItemsModel/>
@@ -28,4 +24,8 @@ const ShopPage = ({ currentPage, onFirstMount, allPathNames}) =>  {
 
 }
 
-export default ShopPage;
+
+
+export const getServerSideProps = wrapper.getServerSideProps(store => async ({ req, query }) => {
+     await store.dispatch(getAllProducts(req, query.page, query.location, query.artistName, query.category))
+})

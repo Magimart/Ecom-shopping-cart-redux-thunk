@@ -1,27 +1,30 @@
-import nc from 'next-connect'
-import dbConnect from '../../../../config/dbConnect'
+import nc from 'next-connect';
+import { dbConnect } from '../../../../config';
+import { getUserDetails, updateUser, deleteUser } from '../../../../controllers/authControllers/authControllers';
+import { isAuthenticatedUser } from '../../../../middlewares/authUser';
+import onError from '../../../../middlewares/errors';
 
-import { getUserDetails, updateUser, deleteUser } from '../../../../controllers/authControllers'
 
-import onError from '../../../../middlewares/errors'
-import { isAuthenticatedUser, authorizeRoles } from '../../../../middlewares/auth'
 
 const handler = nc({ onError });
 
 dbConnect();
 
 handler
-    .use(isAuthenticatedUser, authorizeRoles('admin'))
+    // .use(isAuthenticatedUser, authorizeRoles('admin'))
+    .use(isAuthenticatedUser)
     .get(getUserDetails)
 
 
 handler
-    .use(isAuthenticatedUser, authorizeRoles('admin'))
+    // .use(isAuthenticatedUser, authorizeRoles('admin'))
+    .use(isAuthenticatedUser)
     .put(updateUser)
 
 
 handler
-    .use(isAuthenticatedUser, authorizeRoles('admin'))
+    // .use(isAuthenticatedUser, authorizeRoles('admin'))
+    .use(isAuthenticatedUser)
     .delete(deleteUser)
 
 export default handler;

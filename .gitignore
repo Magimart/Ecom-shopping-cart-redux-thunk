@@ -1,17 +1,8 @@
 # configs
-/config
 
-# learn
-/sch
-/trash
-/test
-/about
-/contact
-/projects
-/utils/animations
+#not needed
 /redux/reducers/cartReducer
-/redux/reducers/checkoutReducer
-
+redux/reducers/orderReducer
 
 # dependencies
 /node_modules

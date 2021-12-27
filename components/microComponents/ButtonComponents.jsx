@@ -1,7 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-// import styles from '../styles/test.module.css';
-import IsLoading from '../IsLoading';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight, faChevronLeft} from "@fortawesome/free-solid-svg-icons";
 import { GoBack, GoForward } from './GoForwardBackBtn';
@@ -22,10 +20,29 @@ export const  NextPageButton = (({ allPathNames, currentPage }, ref) => {
 
 
         const nextPageLink = React.useEffect(() =>{ 
-          
+            
         
       setPage(() =>
-              allPathNames && allPathNames.reduce((result, path, index, arr) => {}, null)
+              allPathNames && allPathNames.reduce((result, path, index, arr) => {
+  
+                        //  console.log(arr);
+             
+                const currentIndex = arr.findIndex((index)  =>  (index.pathName === currentPage));
+                  //  console.log(`${currentIndex} current index`);
+                  //  console.log(`${currentPage} current page`);
+  
+                const getNextIndex = currentIndex < 3? (currentIndex + 1 ) : (currentIndex + 0);    
+                  // console.log(`${getNextIndex} next index`);
+                  const getNextPage =  arr.find((el, index, arr) => typeof el.pageName === "string" && index === getNextIndex);
+                  // console.log(getNextPage);
+  
+               if(getNextPage && getNextPage.pathName) return result = getNextPage.pathName;
+
+                return (console.log(result))
+
+                   
+
+             }, null)
              
            )
        }
@@ -37,7 +54,57 @@ export const  NextPageButton = (({ allPathNames, currentPage }, ref) => {
           
         return (
                  <> 
-                   .................
+                  <div   className="
+                                   flex
+                                    justify-end right-8
+                                   relative -top-3 z-0
+                                ">
+    <React.Fragment >
+      {/* {
+       currentPage && nextPage?
+       ( tempLoading && tempLoading === "/"? (console.log('temp is empty')) : (console.log('now full')) )
+     : (<IsLoading/>) //___not tested yet!!
+       } */}
+         {
+           currentPage && currentPage === "/contact"? (
+            <GoBack currentPage={currentPage}/>
+             ): (
+            <Link href={nextPage && typeof nextPage === "string"? nextPage : "/"}>
+  
+               <button id="" 
+                 className="nextButton
+                           absolute
+                           h-10
+                           w-10
+                           p-0
+                           md:right-0a
+                           bottom-20
+                           bg-gradient-to-r from-transparent via-yellow-300 to-gray-900 
+     
+                         " onClick={nextPageLink}>
+               <   FontAwesomeIcon id="nextButtonIcon"
+                         className="prevButtonIcon relative
+                                    m-auto
+                                   h-4
+                                   w-4
+                                   text-xs
+                                   md:text-sm
+                                  text-white 
+                                      
+                                "
+                        icon={faChevronRight}/>
+            </button>
+           </Link>
+           )
+         }
+
+  
+  
+  
+  </React.Fragment>
+  
+  
+             </div> 
   
                  </>
                   
@@ -58,7 +125,22 @@ export const  NextPageButton = (({ allPathNames, currentPage }, ref) => {
             
         
       setPrevPage(() =>
-              allPathNames && allPathNames.reduce((result, path, index, arr) => {}, null)
+              allPathNames && allPathNames.reduce((result, path, index, arr) => {
+               
+                const currentIndex = arr.findIndex((index)  =>  (index.pathName === currentPage));
+                    // console.log(`${currentIndex} current index`);
+                    // console.log(`${currentPage} current page`);
+  
+                const getPrevIndex = currentIndex <= 0 || currentIndex > 3? (currentIndex + 0) : (currentIndex - 1  );    
+                    // console.log(`${getPrevIndex} prev index`);
+  
+                  const getPrevPage =  arr.find((el, index, arr) => typeof el.pageName === "string" && index === getPrevIndex);
+                    // console.log(getPrevPage);
+  
+               if(getPrevPage && getPrevPage.pathName) return result = getPrevPage.pathName; 
+  
+                return result;
+             }, null)
            )
        }
             ,  

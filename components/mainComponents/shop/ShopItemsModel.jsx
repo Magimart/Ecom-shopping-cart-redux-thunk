@@ -3,31 +3,17 @@ import { motion } from "framer-motion";
 import { Parallax, Background } from "react-parallax";
 import { useDispatch, useSelector } from "react-redux";
 import {useRouter} from "next/router";
-import { getAllProducts } from "../../../redux/actions/productActions";
-import Pagination from "react-js-pagination";
+// import Pagination from "react-js-pagination";
 import { clearErrors } from "../../../redux/actions/productActions";
-import ReactPaginate from 'react-paginate'; // can remove if not working 
-import Link from "next/link";
 import { ProductCardsItem } from "./ProductCardsItem";
+import { addToCart } from "../../../redux/actions/cartActions";
+import SearchBar from "../../headerComponents/SearchBar";
 
 
   const ShopItemsModel = ( )=> {
 
-
-    const dispatch = useDispatch();
-     const router = useRouter();
-
-    let {country, page = 1} = router.query;
-    page = Number(page)
- 
-
-    
-        // const {safaris, responsePerPage, filteredSafarisCount, safarisCount, error } = useSelector(state => state.allSafaris);
-        // const {allStoredPaintings, allPaintingsCount, resPerPage, filteredPaintingCount,  error } = useSelector(state => state.allProducts);
-       let { allProductCount, allStoredProducts, filteredProductCount, resPerPage  }= useSelector(state => state.allProducts);
-
-              const image4 ="/images/image-four.jpg";
-              const image3 ="/images/image-three.jpg";
+              const image4 ="https://res.cloudinary.com/magimaart/image/upload/v1639695360/backgroundCover/image-four_b1nac2.jpg";
+              const image3 ="https://res.cloudinary.com/magimaart/image/upload/v1639695375/backgroundCover/image-three_bjzjgh.jpg";
 
               const CardVariants = {
                 beforeHover: {},
@@ -52,29 +38,41 @@ import { ProductCardsItem } from "./ProductCardsItem";
               };
 
 
-        
-                          
+     const dispatch = useDispatch();
+     const router = useRouter();
+
+        let { allProductCount, allStoredProducts, filteredProductCount, resPerPage  }= useSelector(state => state.allProducts);
+
+        let {location, page = 1} = router.query;
+        page = Number(page)
+    
+                      
           useEffect(() => {
-             dispatch(getAllProducts());
+                 
                  dispatch(clearErrors());
-       }, [dispatch]);
+       }, [router, dispatch]);
 
 
+                //____________pagination
+                const handlePagination = (pageNumber) => {
+                        
+                    console.log("here is the new page ________xxx___________________")
+                    console.log(pageNumber)
+                        router.push(`/shop/?page=${pageNumber}`);
+                    }
 
-    //____________pagination
-       const handlePagination = (pageNumber) => {
-           pageNumber = page //___________________testing
-         router.push(`/shop/product?page=${pageNumber}`);
-     }
-
-     let searchResult = allProductCount;
-     if(country){
-         console.log(`here is the all product count ${allProductCount}`)
-         searchResult = filteredProductCount;
-     }
-     console.log(`here is the search results ${searchResult}`)
-     console.log(`here is the all product count ${allProductCount}`)
+                  let searchResult = allProductCount;
+                  if(location){
+                      searchResult = filteredProductCount;
+                  }
         
+                  //_________________________addto cart
+                  const addToCartHandler = async(id) => {
+
+                    dispatch(addToCart(id));
+                        // router.push('/shop/cart').then(()=>router.reload())
+                        router.replace('/shop/cart')
+                }
 
     return (
 
@@ -95,8 +93,12 @@ import { ProductCardsItem } from "./ProductCardsItem";
                         <br />
                         <h1 className="text-gray-50 font-sans text-3xl"> I need a little extra time </h1>
                         <br />
-                            <h2 className="text-gray-50 font-sans text-xl"> to bring out the never unseen </h2>
+                            <h2 className="text-gray-50 font-sans text-xl"> to bring out the never seen </h2>
+
                         <br />
+                        <div>
+                          <SearchBar/>
+                        </div>
 
                 </div>
             </Parallax>
@@ -125,15 +127,21 @@ import { ProductCardsItem } from "./ProductCardsItem";
 
                             {allStoredProducts && allStoredProducts.map((item)=> {
 
+                              console.log(item)
+
                                 return (
                                         <React.Fragment key={item._id}>
-                                               <ProductCardsItem item={item}/>
+                                               <ProductCardsItem 
+                                                    item={item}
+                                                    addToCartHandler={addToCartHandler}
+                                               />
                                         </React.Fragment>
                                 );
                             })}
                                                          
-                              {/* end product section  */}
-      
+                {/* end product section  */}
+
+                        
                         </div>
                     </div>
                 </div>
@@ -142,25 +150,25 @@ import { ProductCardsItem } from "./ProductCardsItem";
 
                     {/* pagination  */}
 
-                    {
-                  resPerPage < searchResult && 
-                    <div className="relative bottom-10 text-white mx- z-99 right-0  h-max w-screen ">
-                    <Pagination
-                        innerClass="flex flex-row  w-full justify-center px-10 bg-white"
-                        activePage={page}
-                        itemsCountPerPage={resPerPage}
-                        totalItemsCount={allProductCount}
-                        onChange={handlePagination}
-                        nextPageText={"next"}
-                        prevPageText={"prev"}
-                        firstPageText={"1st"}
-                        lastPageText={"end"}
-                        itemClass={"pagination-item bg-yellow-600 px-1  flex relative"}
-                        linkClass={"page-link bg-yellow-80 f"}
-                    />
-
-                    </div>
-                } 
+                       {/* {
+                           resPerPage < searchResult && 
+                           <div className="relative  py-4 bottom-10 mx- z-99 right-0  h-max w-screen mt-6 ">
+                                   <Pagination 
+                                       innerClass="flex flex-row   py-3 w-full justify-center px-10 bg-yellow-800 bg-opacity-30"
+                                       activePage={page}
+                                       itemsCountPerPage={resPerPage}
+                                       totalItemsCount={allProductCount}
+                                       onChange={handlePagination}
+                                       nextPageText={"next"}
+                                       prevPageText={"prev"}
+                                       firstPageText={"1st"}
+                                       lastPageText={"end"}
+                                       itemClass={"pagination-item bg-yellow-500 px-10 py-2   flex relative"}
+                                       linkClass={"page-link bg-yellow-800 bg-opacity-40 text-white bg-white px-2  rounded-sm"}
+                                   />
+               
+                           </div>
+                       }  */}
 
 
             </Parallax> 
@@ -174,5 +182,6 @@ import { ProductCardsItem } from "./ProductCardsItem";
 }
 
 export default ShopItemsModel;
+
 
 

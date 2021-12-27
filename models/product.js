@@ -8,20 +8,13 @@ const productSchema = new mongoose.Schema({
         trim: true,
         maxLength: [100, 'painting name cannot exceed 100 characters']
     },
-    artistName: {
-        type: String,
-        required: [false, 'Please enter artist name of this painting'],
-        trim: true,
-        maxLength: [100, 'painting name cannot exceed 100 characters']
+    // artistName, countryOfArtist, countryOfArtist => ref: user,    
+    user: {  //____user who created the safari
+        type: mongoose.Schema.ObjectId,
+        ref:'User',
+        required: true
     },
-    countryOfArtist: {
-        type: String,
-        required: [true, 'Please enter your country of origin'],
-    },
-    address: {
-        type: String,
-        required: [false, 'enteryour address, note that your infomation will be kept private'],
-    },
+
     price: {
         type: Number,
         required: [true, 'Please enter room price per night'],
@@ -43,9 +36,23 @@ const productSchema = new mongoose.Schema({
             values: [
                 'mixed medium',
                 'acrylics on canvas',
-                'oils on canvas'
+                'oils on canvas',
+                'ink on paper',
+                'fabrics',
+                'ceramics',
+                'photography'
             ],
             message: 'Please select alteat one medium'
+        }
+    },
+    dimenssion:{
+        width: {
+            type: Number,
+            required: true
+        },
+        height: {
+            type: Number,
+            required: true
         }
     },
     category: {   //---forcategori
@@ -55,13 +62,17 @@ const productSchema = new mongoose.Schema({
             values: [
                 'painting',
                 'sculpture',
-                'wall hanging'
+                'wall hanging',
+                'water colours',
+               'photography', 'fabrics','ceramics'
             ],
             message: 'Please select alteat one medium'
         }
     },
 
-    imagesOfPainting: [
+    // imagesOfPainting: [
+    imagesOfProduct: [
+   
         {
             public_id: {
                 type: String,

@@ -4,26 +4,28 @@ import { combineReducers } from 'redux';
  import { publishReducer, allInfosReducer } from './appInfoReducer';
  import { cartReducer,  } from './cartReducer';
  import { checkoutReducer, orderSummaryReducer } from './checkoutReducer';
- import { allProductReducer, productDetailsReducer } from './productReducer';
- import { myOrderReducer } from './orderReducer';
+ import { allProductReducer, productDetailsReducer, newProductReducer, currentUserProductsReducer } from './productReducer';
+ import { myOrderReducer, orderDetailsReducer } from './orderReducer';
 
 
 
 
 const reducer = combineReducers({ 
         allProducts: allProductReducer,
-        productDetails: productDetailsReducer,
-        cart: cartReducer,
-        checkout: checkoutReducer, 
-        // newOrderPurchase: orderReducer,
-        newUser: registerUserReducer,
-        orderSummary: orderSummaryReducer, 
-        currentUserOrders: myOrderReducer,    
-        user: userReducer,
-       allUsers: allUsersReducer,
-       allInfos: allInfosReducer,
-       newInfo: publishReducer,
-       isCurrentUser: isCurrentUserReducer, 
+      productDetails: productDetailsReducer,
+//         newProduct: newProductReducer,
+//         currentUserProducts: currentUserProductsReducer,
+//         cart: cartReducer,
+//         checkout: checkoutReducer, 
+//         newUser: registerUserReducer,
+//         orderSummary: orderSummaryReducer, 
+//         currentUserOrders: myOrderReducer,
+//         orderDetails: orderDetailsReducer,    
+//         user: userReducer,
+//        allUsers: allUsersReducer,
+//        allInfos: allInfosReducer,
+//        newInfo: publishReducer,
+//        isCurrentUser: isCurrentUserReducer, 
 });
 
 export default reducer;

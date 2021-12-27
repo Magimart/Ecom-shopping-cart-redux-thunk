@@ -15,6 +15,16 @@ const userSchema = new mongoose.Schema({
         required: false,
         maxLength: [20, 'Your name must be less 50 characters']
     },
+    country: {
+        type: String,
+        required: true,
+        maxLength: [20, 'Your country must be less 100 characters'] //select field
+    },
+    address: {
+        type: String,
+        required: true,
+        maxLength: [300, 'Your address must be less 300 characters']
+    },
     email: {
         type: String,
         required: [true, 'Please enter your email'],
@@ -30,11 +40,11 @@ const userSchema = new mongoose.Schema({
     avatar: {
         public_id: {
             type: String,
-            required: true
+            required: false //__________ch to true
         },
         url: {
             type: String,
-            required: true
+            required: false
         }
     },
     

@@ -1,23 +1,13 @@
 import '../styles/globals.css';
-import '../styles/index.scss';  //__can remove global css
-import Layout from '../components/Layout';
+import '../styles/index.scss';  
+import Layout from '../components/layoutComponents/Layout';
 import { AnimatePresence } from "framer-motion";
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
-import IsLoading from "../components/IsLoading";
 import { wrapper } from '../redux/store'
-
-//___new config
-// import { wrapper } from '../store/store';
 import { useStore } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-
-
-
-//________db data
-import { myStack } from '../models/Portfolio';
 import { staggernateContentDelayed } from '../utils/animations/staggernate';
-import { faLessThanEqual } from '@fortawesome/free-solid-svg-icons';
 
 
 function MyApp({ Component, pageProps, router }) {
@@ -30,12 +20,6 @@ function MyApp({ Component, pageProps, router }) {
   const [currentPage, setCurrentPage] = useState([]);
   const [loading, setloading] = useState(true);
   const [reLoadDelay, setReLoadDelay] = useState(null);
-  const [frontend, setFrontend] = useState([]);
-  const [backend, setBackend] = useState([]);
-  const [toggleOnClick, setToggleOnClick] = useState(false);
-  const [skills, setSkills] = useState([]);
-  const [tools, setTools] = useState([]);
-
 
 
   const [allPathNames, setAllPathName] = useState([
@@ -52,7 +36,6 @@ function MyApp({ Component, pageProps, router }) {
 
         useEffect(() => {
           setCurrentLink(() => allPathNames.filter((pathname, index) => {
-            // console.log(`the index is ${index}`)
             return pathname.pathName === router.pathname 
             }
             ));
@@ -79,7 +62,6 @@ function MyApp({ Component, pageProps, router }) {
           <>
             {/* <PersistGate persistor={store.__persistor} loading={ <div>Loading</div> }> */}
             <PersistGate persistor={store.__persistor} loading={""}>  
-              
               <Layout allPathNames={allPathNames}
                       currentPage={currentPage}
                       loading={loading}
@@ -98,10 +80,7 @@ function MyApp({ Component, pageProps, router }) {
                     currentPage={currentPage}
                     reLoadDelay={reLoadDelay}
                     setReLoadDelay={setReLoadDelay}
-                    //  frontend={frontend}
-                    //  backend={backend}
-
-                    />     
+                  />     
                 </AnimatePresence>
               </Layout>  
             </PersistGate>                
@@ -129,48 +108,15 @@ function MyApp({ Component, pageProps, router }) {
                     currentPage={currentPage}
                     reLoadDelay={reLoadDelay}
                     setReLoadDelay={setReLoadDelay}
-                    //  frontend={frontend}
-                    //  backend={backend}
-
-                    />     
+                  />     
                 </AnimatePresence>
               </Layout>  
             </PersistGate>                
          </>
         )
 
-        return (
-                <>
-
-                  <Layout allPathNames={allPathNames}
-                           currentPage={currentPage}
-                           loading={loading}
-                           reLoadDelay={reLoadDelay}
-                           onFirstMount={onFirstMount}
-                           staggernateContentDelayed={staggernateContentDelayed}
-                          >
-                    <AnimatePresence exitBeforeEnter>
-                       <Component
-                         onFirstMount={onFirstMount}
-                         key={router.route}
-                         {...pageProps}
-                         currentLink={currentLink}
-                         allPathNames={allPathNames}
-                         loading={loading}
-                         currentPage={currentPage}
-                         reLoadDelay={reLoadDelay}
-                         setReLoadDelay={setReLoadDelay}
-                        //  frontend={frontend}
-                        //  backend={backend}
-
-                        />     
-                     </AnimatePresence>
-                  </Layout>                  
-              </>
-       )
    };
    
-  //  export default MyApp;
   export default wrapper.withRedux(MyApp);
 
 

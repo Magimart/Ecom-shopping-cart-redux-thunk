@@ -15,7 +15,7 @@ const HomeMenu = ({allPathNames}) => {
             <div id="menuWrapper" className="h-44 
                            w-100vw
                            relative
-                             m-4 
+                             mt-5
                               "> 
               
                <div className="holder  h-full grid                 
@@ -76,7 +76,7 @@ const HomeMenu = ({allPathNames}) => {
                                             p-2
                                             rounded-tl-2xl
                                             rounded-tr-lg
-                                        text-2 absolute top-4 left-12"                                         
+                                        text-2 absolute top-10 left-12"                                         
                            >
                                 <div className="bg-gradient-to-r from-yellow-100 to-green-600
                                                    rounded-full p-2 px-2

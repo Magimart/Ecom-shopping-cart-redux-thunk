@@ -21,7 +21,7 @@ frontendSkills : [{
         name: "pHp", tools: ["Xampp"]
       },
       {
-         name: "Tailwind Css", tools: []
+         name: "Tailwind Css", tools: ["material tailwind"]
       },
       {
           name: "threeJs", tools: []
@@ -39,7 +39,10 @@ frontendSkills : [{
       },   
       { 
         name: "Material UI", tools: ["MI APIs"]
-     }
+     },
+     { 
+      name: "storyBook", tools: []
+   }
    ]
 },
 { 
@@ -49,7 +52,9 @@ backendSkills: [
      { name: "Express", tools: ["Nodemonde", "morgan", "cors"]},
      { name: "MongoDb", tools: ["mongoose", "contentenful", "MongoAtlas"]},
      { name: "MySql",tools: ["Xampp"]},
-     { name: "Sql", tools: ["Postgres", "ElephantSql"]}
+     { name: "Sql", tools: ["Postgres", "ElephantSql"]},
+     { name: "docker", tools: []}
+
  ]
 },
 { 
@@ -60,70 +65,9 @@ desktop: [
 }, 
 { 
 helperTools: [ 
-      "git", "Xammp", "git Bash", "power shell", "chrome & firefox DevTools"
+      "git", "git Bash", "power shell", "chrome & firefox DevTools"
 ]
 }
 ]
 
 
-
-
-
-// { 
-//   title : "frontend",
-//   frontendSkills : [
-//       { 
-//          skills: {
-//                  name:"ReactJs",
-//                  tools:["devTools", "react-springs"],
-//          },
-//       },
-//       { 
-//         skills: { 
-//              name:"NextJs", tools: ["SSR", "Startic rendering"]
-//         },
-//       },
-//       { 
-//         skills:   
-//             {name: "Redux", tools: ["reduxDev tool"]},
-  
-//        },
-//        { 
-//         skills:   
-//         {name: "pHp", tools: ["Xampp"]},
-  
-//        }, 
-//        { 
-//         skills:   
-//         { name: "Tailwind Css", tools: []},
-  
-//        },
-//        { 
-//           skills:   
-//           {name: "threeJs", tools: []},
-//        }, 
-//        { 
-//         skills:   
-//         {name: "viewJs"},
-//        }, 
-//        { 
-//         skills:   
-//         { name: "Ssas", tools: []},
-//       },   
-//        { 
-//         skills:   
-//         { name: "Css", tools: []},
-//        },
-  
-//        { 
-//         skills:   
-//         { name: "Bootstrap", tools: ["bootsrap3 & above"]},
-//        }, 
-  
-//        { 
-//         skills:   
-//         { name: "Material UI", tools: ["MI APIs"]}
-//       }, 
-  
-//   ]
-//   },

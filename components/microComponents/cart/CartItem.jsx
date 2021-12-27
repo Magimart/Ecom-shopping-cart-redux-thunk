@@ -4,13 +4,12 @@ import React from "react";
 
 
 export const CartItem = ({ item, 
-                           qtyChangeHandler,
                             removeHandler,
                             increaseHandler,
                             decreaseHandler,
-                            subPriceQty
+                            
                        }) => {
-
+   
 
               return (
                       <div className="cartItem bg-yellow-400 w-full h-32  
@@ -19,16 +18,19 @@ export const CartItem = ({ item,
                                           "
                                         >
                                           {/* span 1____________ */}
-                                          <div className="col-span-2 flex justify-center items-center  w-full bg-gray-100 h-full p-2">
+                                          
+                                          <div className="col-span-2 flex justify-center items-center  w-full bg-gray-100 h-20 py-0">
                                                 <div className="w-20 h-16 bg-gray-100  p-1">
                                                         <img 
-                                                              src={item && item.imagesOfPainting[0].url} alt={item.artistName} 
+                                                              src={item && item.imagesOfProduct[0].url} alt={item.artistName} 
+                                                              className='object-cover h-16 w-20'
                                                         />
                                                 </div>
                                           </div>
                                         {/* span 1_____________  */}
                                           <div className="col-span-3  w-full text-gray-400  text-xs md:text-sm lg:text-sm xl:text-sm font-semibold bg-gray-800 bg-opacity-80  
                                                    h-full px-1  py-6 md:px-3 lg:px-4 xl:px-4 "
+                                                  //  onClick={()=> <Link href={`/shop/product/${item && item._id}`}/>}
                                            >                      
                                                   <h3 className=" pb-1 mx-1 " >Title: 
                                                       <span className="font-thin text-white mx-1">
@@ -40,8 +42,10 @@ export const CartItem = ({ item,
                                                               {item.artistName } 
                                                         </span>
                                                 </h3>
-                                        {/* span 3 _____________*/}
-                                          </div>
+                                            {/* span 3 _____________*/}
+                                          </div>                                         
+
+
                                           <div className="col-span-2  w-full bg-gray-500 h-full bg-opacity-30 py-12 px-2 mx-1  justify-center">
                                                 <h3 className="px-2">Price: €
                                                     <span className="text-gray-100 sm:font-bold md:font-bold lg:font-bold xl:font-bold xxl:font-bold">
@@ -69,6 +73,8 @@ export const CartItem = ({ item,
                                                                   </span>
                                                     </div>
                                                 </div>
+
+
                                                 {/* delete, reduce, add button */}
                                                 <div className="bg-yellow-300 text-xs p-2 md:p-0 lg:p-0 xl:p-0 xxl:p-0  w-full h-full block md:flex lg:flex xl:flex xxl:flex ">
                                                         <button className="icon-markup    p-2 bg-red-600 bg-opacity-70 w-14 md:w-16   lg:w-16 xl:w-16 xxl:w-16   text-white  "
