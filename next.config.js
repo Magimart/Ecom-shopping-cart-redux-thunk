@@ -16,7 +16,7 @@ module.exports = {
   
  
     MONGODB_URI: 'mongodb://localhost:27017/magimabioDb',
-    DATABASE_CLOUD:'mongodb+srv://portfolioDb:frederick1610@final-projects-wbs-codi.pulb6.mongodb.net/bioDB?retryWrites=true&w=majority',
+    DATABASE_CLOUD:'',
  
 
     NEXTAUTH_URL:'http://localhost:3000', // for production
@@ -37,8 +37,8 @@ module.exports = {
     
         //____cloudinary strings
                 CLOUDINARY_NAME:'magimaart',
-                CLOUDINARY_API_KEY:'399829674291311',
-                CLOUDINARY_API_SECRET:'4rfscNDKgSQQhPu_mxoFiNYsqoU',             
+                CLOUDINARY_API_KEY:'',
+                CLOUDINARY_API_SECRET:'',             
 
 }, 
 
