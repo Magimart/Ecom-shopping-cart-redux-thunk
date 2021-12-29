@@ -7,7 +7,11 @@ const path = require('path');
 //$ npm i --save lodash
 
 module.exports = {
-  env : {    
+  env : {  
+    
+    SERVER: process.env.SERVER,
+    NEXTAUTH_URL:'https://ecom-shopping-cart-redux-thunk.vercel.app/', // for production
+
 
     //_______stripe pay
     STRIPE_PUBLIC_KEY: '',
@@ -17,10 +21,6 @@ module.exports = {
  
     MONGODB_URI: 'mongodb://localhost:27017/magimabioDb',
     DATABASE_CLOUD:'mongodb+srv://portfolioDb:frederick1610@final-projects-wbs-codi.pulb6.mongodb.net/bioDB?retryWrites=true&w=majority',
- 
-
-    NEXTAUTH_URL:'http://localhost:3000', // for production
-   //  NEXTAUTH_URL_INTERNAL: devNextAuthUrl
 
     SENDGRID_API:'',
     SMTP_SERVER:'',
@@ -65,7 +65,7 @@ images: {
    includePaths: [path.join(__dirname, 'styles')]
  },
 
- eslint: {    ///____!!
-         ignoreDuringBuilds: true,
+ eslint: {    ///____!!ignoring eslints
+         ignoreDuringBuilds: false,
  }
 }
