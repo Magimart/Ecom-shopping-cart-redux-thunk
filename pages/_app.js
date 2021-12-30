@@ -13,6 +13,7 @@ import { staggernateContentDelayed } from '../utils/animations/staggernate';
 function MyApp({ Component, pageProps, router }) {
 
   const store = useStore((state) => state);
+  console.log(store)
 
 
   const [onFirstMount, setOnFirstMount] = useState(true);

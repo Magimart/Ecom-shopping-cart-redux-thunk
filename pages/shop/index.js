@@ -15,8 +15,8 @@ export default function  ShopPage () {
        <div  className="grid  m-0 p-0 col-span-12  h-100vha h- bg-yellow-400 bg-opacity-60               
                     "
         >
-            <ShopItemsModel/>
-       </div> 
+'            <ShopItemsModel/>
+'       </div> 
 
    </ViewportProvider>
      </>
@@ -25,7 +25,7 @@ export default function  ShopPage () {
 }
 
 
-
 export const getServerSideProps = wrapper.getServerSideProps(store => async ({ req, query }) => {
+
      await store.dispatch(getAllProducts(req, query.page, query.location, query.artistName, query.category))
 })

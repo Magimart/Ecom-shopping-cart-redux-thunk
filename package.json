@@ -5,9 +5,13 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "export": "next export"
+    "start": "next start"
   },
+  "engines": {
+    "node": ">=14.0.0 <16",
+    "npm": ">=6"
+  },
+  "author": "Magima Felix",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
@@ -26,7 +30,6 @@
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^3.1.2",
     "lodash": "^4.17.21",
-    "mongodb": "^3.6.9",
     "mongoose": "^5.11.14",
     "next": "^12.0.7",
     "next-absolute-url": "^1.2.2",
@@ -39,6 +42,7 @@
     "react-dom": "17.0.2",
     "react-intersection-observer": "^8.32.0",
     "react-parallax": "^3.3.0",
+    "react-redux": "^7.2.4",
     "react-toastify": "^8.1.0",
     "redux": "^4.1.2",
     "redux-devtools-extension": "^2.13.9",
@@ -55,6 +59,11 @@
     "precss": "^4.0.0",
     "tailwindcss": "^2.0.4"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Magimart/Ecom-shopping-cart-redux-thunk"
+  },
+  "homepage": "",
   "optionalDependencies": {
     "mongodb": "^3.6.9"
   }
