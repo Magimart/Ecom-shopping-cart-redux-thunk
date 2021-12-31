@@ -42,6 +42,7 @@ export async function getServerSideProps(context) {
 
      dbConnect();
 
+
   try{
       const data = await Info.find({}).exec();
        const siteInfo = JSON.parse(JSON.stringify(data));
