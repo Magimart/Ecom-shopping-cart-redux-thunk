@@ -16,8 +16,8 @@ module.exports = {
             STRIPE_SECTRET_KEY: '',
             STRIPE_WEBHOOK_SECRET: '',
           
-            NEXT_PUBLIC_MONGODB_URI: process.env.MONGODB_URI,
-            NEXT_PUBLIC_DATABASE_CLOUD: 'mongodb+srv://portfolioDb:frederick1610@final-projects-wbs-codi.pulb6.mongodb.net/bioDB?retryWrites=true&w=majority', 
+            MONGODB_URI: process.env.MONGODB_URI,
+            DATABASE_CLOUD: process.env.DATABASE_CLOUD,
         
             SENDGRID_API: process.env.SENDGRID_API,
             SMTP_SERVER: process.env.SMTP_SERVER,
@@ -32,9 +32,9 @@ module.exports = {
             JWT_SECRET: process.env.JWT_SECRET,
             
             //____cloudinary strings
-            NEXT_PUBLIC_CLOUDINARY_NAME:process.env.CLOUDINARY_NAME,
-            NEXT_PUBLIC_CLOUDINARY_API_KEY:process.env.CLOUDINARY_API_KEY,
-            NEXT_PUBLIC_CLOUDINARY_API_SECRET: process.env.CLOUDINARY_API_SECRET,             
+            CLOUDINARY_NAME:process.env.CLOUDINARY_NAME,
+            CLOUDINARY_API_KEY:process.env.CLOUDINARY_API_KEY,
+            CLOUDINARY_API_SECRET: process.env.CLOUDINARY_API_SECRET,             
          }, 
 
            //  config image
