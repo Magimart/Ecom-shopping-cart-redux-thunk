@@ -61,5 +61,6 @@ module.exports = {
       eslint: {    ///____!!ignoring eslints
               ignoreDuringBuilds: true,
       },
+      
  
 }
