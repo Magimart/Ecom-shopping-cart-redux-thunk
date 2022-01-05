@@ -15,11 +15,13 @@ export default function HomePage ({ infos,  onFirstMount, allPathNames, currentL
 
                      <div id="HomeMwrappero"  
                           className=" grid  relative
-                          bg-yellow-700 bg-opacity-75  m-0 p-0
+                          bg-yellow-700a bg-opacity-75  m-0 p-0
                            h-screena w-screen
                           flex-wrap flex-colse
+                          bg-gradient-to-r from-transparent via-yellow-700 to-black">
+
                            "
-                      >
+                      
                      {onFirstMount && <BackgroundHome
                                 onFirstMount={onFirstMount}
                     />}
@@ -27,9 +29,10 @@ export default function HomePage ({ infos,  onFirstMount, allPathNames, currentL
                                    <HomeComponents
                                       onFirstMount={onFirstMount}
                                       currentLink={currentLink}
-                                      allPathNames={allPathNames} 
                                       infos={infos}   
                                     />
+
+                                    
                             </ViewportProvider>
                             
                        </div>      

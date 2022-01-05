@@ -42,39 +42,3 @@ export const useViewport = () => {
 };
 
 
-
-
-//________________window Dimensions----use thus instead---------------------
-
-
- const screenDimmenssionContext = React.createContext({});
-
-export const UseWindowSize = ({children}) => {
-
-   const [screenSize, setScreenSize] = useState([0, 0]);
-
-    useLayoutEffect(() => {
-        const updateSize = () => {
-           setScreenSize([window.innerWidth, window.innerHeight]);
-       }
-          window.addEventListener('resize', updateSize);
-         updateSize();
-            return () => window.removeEventListener('resize', updateSize);
-       }, []);
-
-   //  console.log(screenSize)
-    const [width, height] = screenSize;
-  
-      return (
-      <screenDimmenssionContext.Provider value={{width, height}}>
-           {children}
-      </screenDimmenssionContext.Provider>
-      )
-}
-
-export const useViewDimenssion = () => {
-    const {width, height } = React.useContext(screenDimmenssionContext);
-   //  console.log(width)
-    return {width, height} ;
-};
-  

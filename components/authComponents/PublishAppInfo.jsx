@@ -34,7 +34,7 @@ export const PublishAppInfoModule = ( ) => {
        if(error)toast.error(error)
        dispatch(clearErrors);
 
-  }, [dispatch, error, success]);
+  }, [dispatch, error, success, router]);
 
 
   

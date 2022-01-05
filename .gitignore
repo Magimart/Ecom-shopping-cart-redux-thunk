@@ -1,5 +1,9 @@
 # configs
 
+#workspace and trash
+/trash
+/trash/note.txt
+
 #not needed
 /redux/reducers/cartReducer
 redux/reducers/orderReducer

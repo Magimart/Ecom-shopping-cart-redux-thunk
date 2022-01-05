@@ -11,7 +11,7 @@ import { currentUser } from '../../redux/actions/userActions';
 import { signIn, signOut, useSession } from 'next-auth/client';
 
 
-   const HomeComponents = ({ infos, onFirstMount, allPathNames, currentLink}) => {
+   const HomeComponents = ({ infos, onFirstMount, currentLink}) => {
 
         const { width } = useViewport();
           const breakpoint = 768;
@@ -39,9 +39,11 @@ import { signIn, signOut, useSession } from 'next-auth/client';
          return (
                    <>
                   
-                                <section id="homeMComponentWrapper" className="grid relative top-4a bg-yellow- bg-opacity-75 md:bg-opacity-50 gap-6a
-                                                                            grid-rows-3 w-100vwa   h-100vha h-screen p-0 m-0                                                    
-                                                                          ">
+                                <section id="homeMComponentWrapper" 
+                                          className="grid relative top-4a 
+                                                    bg-yellow-400a bg-opacity-75 md:bg-opacity-50 gap-6a
+                                                      grid-rows-3 w-100vwa   h-100vha h-screen p-0 m-0                                                    
+                                                     ">
                                   
                                     {/* level 0ne______reserve_________    */}
                                     <div className={`m-2a
@@ -52,19 +54,19 @@ import { signIn, signOut, useSession } from 'next-auth/client';
                                                   lg:col-span-12
                                                   xl:col-span-12  
                                                    relative
-                                                   bg-black
                                                    bg-opacity-40
                                                    top-16a
                                               `}>
 
+                                                <div className="flex w-screen h-max  justify-center py-28">
+                                                        <h1 className="text-white via-yellow-500 text-3xl opacity-50 ">
+                                                                  Welcome
+                                                        </h1>
+
+                                                </div>
+
                                     </div>
-                                               {/* level two_
-                                               
-                                                   ${width <= breakpoint?(`
-                                                   xl:bg-gradient-to-t from-black via-green-800 to-red-400
-                                                   bg-white
-                                                  `):(``)}
-                                               ______________ col-span-2   */}
+                                               {/* level two__________ col-span-2   */}
                                     <div className="grid row-span-2 
                                                     xxs:row-span-1 xxs:col-span-12 
                                                     xs:row-span-1 xs:col-span-12 
@@ -79,34 +81,35 @@ import { signIn, signOut, useSession } from 'next-auth/client';
                                                   "            
                                       > 
                                          <div className="pb-10a  xxs:mt-10 xs:mt-10 sm:mt-10  relative">
-                                              <TitleOne animateHeaderOne={animateHeaderOne}
-                                                        infos={infos}
-                                              />                             
-                                        </div>                                                                              
+                                               
+                                                <div>
+                                                     <div className="text-3xl  
+                                                                      focus:ringa bg-clip-texta px-20 py-10 rounded-md
+                                                                      bg-gradient-to-r from-white via-purple-700 to-black">
+                                                         <span className=" focus:ring bg-clip-text flex text-transparent
+                                                                          bg-gradient-to-r from-red-400  via-green-500 to-yellow-500
+                                                                          text-5xl font-normal lg:text-4xl xl:text-5xl
+                                                                          py-3
+                                                             "
+                                                          > 
+                                                                <span className="py-1">
+                                                                studioS3
+                                                                </span>
+                                                          </span>
+                                                      </div>
+                                                </div>                            
+                                          </div>                                                                              
                                       <div className="bg-transparent-00 grid-col-3 flex justify-center                
                                                       relative bottom-16a
-                                                      mb-10 md:mb-0 lg:mb-0 xl:mb-0 xl:mb-0 pb-12a
+                                                      mb-10 md:mb-0 lg:mb-0 xl:mb-0 pb-12a
                                                     "                                   
                                       >  
-                                            {
-                                              width < breakpoint? ( 
-                                                          <motion.div
-                                                                initial="initial" 
-                                                                animate="animate"
-                                                                variants={staggernateContentDelayed(onFirstMount)}
-                                                          >
-                                                              <SmallDisplay animateSmall={animateSmall}
-                                                                                    infos={infos}
-                                                              />
-                                                        </motion.div>
-                                                        ) : 
-                                                        (
-                                                        <BigDisplay  animateOnDesktop={animateOnDesktop}
-                                                                            infos={infos}
-                                                        />
-                                                        )
-                                                        
-                                            }                
+                                         <div>
+                                               <h2 className="text-white bg-yellow-500 px-4 py-7 text-3xl "><a href="/shop" className="bg-black text-white h-8 w-max px-4">
+                                                      shop Now
+                                                      </a>
+                                               </h2>
+                                          </div>                
                                       </div>
                                     </div>
                               
@@ -120,12 +123,11 @@ import { signIn, signOut, useSession } from 'next-auth/client';
                                                     xl:col-span-6  xl:-mt-10
                                                     w-full
                                                     mt-16
-                                                    relative                                                    
+                                                    relative  
+                                                    justify-center                                                 
                                                   "                               
                                     >
-                                      <a href="/shop" className="bg-black text-white h-8 w-max px-4">
-                                      store
-                                      </a>
+                                      {/* reserve */}
                                     </div>
                               </section>
                          

@@ -40,35 +40,36 @@ export const CurrentUserProducts = (authCookie, req) => async(dispatch ) => {
             } 
         }
 
-        
- export const getAllProducts = (req, currentPage = 1, location='', artistName, category) => async(dispatch ) => {
-
-    try{
-
-            const { origin } = absoluteUrl(req);
-
-            let link = `${origin}/api/products?page=${currentPage}&location=${location}`
-
-            if (artistName) link = link.concat(`&artistName=${artistName}`);
-            if (category) link = link.concat(`&category=${category}`);
-
-                          const {data} = await axios.get('http://localhost:3000/api/products')
-            // const {data} = await axios.get(link);
-            
+// export const getAllProducts = (req, currentPage = 1, location='', artistName, category) => async(dispatch ) => {
+    export const getAllProducts = (req) => async(dispatch ) => {
+        try{
+    
+                const { origin } = absoluteUrl(req);
+    
+                // let link = `${origin}/api/products?page=${currentPage}&location=${location}`
+    
+                // if (artistName) link = link.concat(`&artistName=${artistName}`);
+                // if (category) link = link.concat(`&category=${category}`);
+    
+                //          const {data} = await axios.get('http://localhost:3000/api/products')
+                // const {data} = await axios.get(link);
+                const {data} = await axios.get(`${origin}/api/products`)
+                console.log(data)
+                
+                        dispatch({
+                            type: ALL_PRODUCT_SUCCESS,
+                            payload: data
+                        })
+    
+            }catch(error){
+                
+                  console.log(error)
                     dispatch({
-                        type: ALL_PRODUCT_SUCCESS,
-                        payload: data
-                    })
-
-        }catch(error){
-            
-            //  console.log(error)
-                dispatch({
-                            type: ALL_PRODUCT_FAIL,
-                            payload: error.response.data.message
-                });
-        } 
-}
+                                type: ALL_PRODUCT_FAIL,
+                                payload: error.response.data.message
+                    });
+            } 
+    }
 
 
 //_____get product details

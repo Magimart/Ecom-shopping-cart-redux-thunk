@@ -55,9 +55,9 @@ export const allProductReducer = (state = {products: []}, action) => {
 
             return {
 
-                allProductCount: action.payload.allProductCount,
-                resPerPage: action.payload.resPerPage,
-                filteredProductCount: action.payload.filteredProductCount,
+                // allProductCount: action.payload.allProductCount,
+                // resPerPage: action.payload.resPerPage,
+                // filteredProductCount: action.payload.filteredProductCount,
                 allStoredProducts: action.payload.allStoredProducts
             }
 

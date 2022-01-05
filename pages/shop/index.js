@@ -25,7 +25,6 @@ export default function  ShopPage () {
 }
 
 
-export const getServerSideProps = wrapper.getServerSideProps(store => async ({ req, query }) => {
-
-     await store.dispatch(getAllProducts(req, query.page, query.location, query.artistName, query.category))
+export const getServerSideProps = wrapper.getServerSideProps(store => async ({ req }) => {
+  await store.dispatch(getAllProducts(req))
 })
