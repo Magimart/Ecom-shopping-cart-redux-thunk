@@ -5,7 +5,6 @@ const path = require('path');
 // export const server = dev ? 'http://localhost:3000' :'https://magima-portfolio.vercel.app/'
 
 
-
 module.exports = {
     env : { 
 
